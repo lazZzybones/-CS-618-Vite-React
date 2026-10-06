@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
-import { useAuth } from '../contexts/AuthContext.jsx'
+import { useAuth, AUTH_DISABLED } from '../contexts/AuthContext.jsx'
 import { createPost } from '../api/posts.js'
 export function CreatePost() {
   const [title, setTitle] = useState('')
@@ -18,7 +18,8 @@ export function CreatePost() {
     e.preventDefault()
     createPostMutation.mutate()
   }
-  if (!token) return <div>Please log in to post new recipy.</div>
+  if (!token && !AUTH_DISABLED)
+    return <div>Please log in to post new recipy.</div>
   return (
     <form onSubmit={handleSubmit}>
       <div>

@@ -1,5 +1,7 @@
 import { createContext, useState, useContext } from 'react'
 import PropTypes from 'prop-types'
+// TODO: temporarily disabled — set to false to turn login back on
+export const AUTH_DISABLED = true
 export const AuthContext = createContext({
   token: null,
   setToken: () => {},
